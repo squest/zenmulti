@@ -3,13 +3,14 @@
 	(:require [compojure.core :refer :all]
 						[compojure.route :refer [resources not-found]]
 						[noir.session :as sess]
-						[noir.response :as resp]))
+						[noir.response :as resp]
+						[zenmulti.alfa.cbdb :refer [get-number]]
+						[zenmulti.alfa.config :refer [app-state]]))
 
 (def backoffice
 	(context "/backoffice" req
 					 (GET "/" req
 								"Hello this is backoffice")))
-
 
 (defroutes
 	main-site
@@ -20,8 +21,11 @@
 					 "Hellow"))
 	(GET "/session-get" [req]
 			 (str "Hello " (sess/get :username)))
+	(GET "/number/:number" [number]
+			 (resp/edn (get-number @app-state number)))
 	(not-found "Kagak nemu nyet"))
 
 (def all-routes
+	"All the routes for the application"
 	(routes backoffice main-site))
 
