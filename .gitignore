@@ -9,7 +9,7 @@ pom.xml.asc
 /.nrepl-port
 /.idea
 *.iml
-/src/zenmulti/config.clj
+*config.clj
 *.css
 *.js
 
