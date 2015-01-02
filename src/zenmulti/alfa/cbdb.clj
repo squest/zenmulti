@@ -1,4 +1,5 @@
 (ns zenmulti.alfa.cbdb
+	(:gen-class)
 	(:require [couchbase-clj.client :refer [create-client] :as cc]
 						[zenmulti.alfa.config :refer :all]))
 

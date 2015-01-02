@@ -6,7 +6,8 @@
 						[ring.middleware.resource :refer [wrap-resource]]
 						[ring.middleware.defaults :refer [wrap-defaults site-defaults]]
 						[zenmulti.alfa.config :refer [config app-state]]
-						[zenmulti.alfa.cbdb :refer [make-couchbase shutdown-cdb]]))
+						[zenmulti.alfa.cbdb :refer [make-couchbase shutdown-cdb]]
+						[zenmulti.alfa.seed :refer [seed-data!]]))
 
 (defonce ^:private server (atom nil))
 
@@ -17,7 +18,10 @@
 						 merge conf)
 			(swap! app-state
 						 make-couchbase
-						 (:which-couchbase? options))))
+						 (:which-couchbase? options))
+			(seed-data! app-state 5000)))
+
+(comment )
 
 (defn- shutdown-app
 	"The necessary actions before shutting-down the app"
@@ -34,7 +38,7 @@
 
 (defn main [opt]
 	"The java entry point to the application"
-	(do (init-app config (read-string opt))
+	(do (init-app config opt)
 			(->> {:port (or (:port opt) 3000)}
 					 (run-server (wrap-all all-routes))
 					 (reset! server))))

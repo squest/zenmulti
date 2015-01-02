@@ -21,6 +21,7 @@
   
   :url "http://example.com/FIXME"
   :main zenmulti.core
+  :uberjar {:aot :all}
   :jvm-opts ["-server"]
   :plugins [[lein-ring "0.8.13"]
             [codox "0.8.10"]

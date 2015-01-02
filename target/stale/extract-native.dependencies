@@ -1,0 +1,1 @@
+([:dependencies ([org.clojure/clojure "1.6.0"] [com.stuartsierra/component "0.2.2"] [zenedu/zenpack "0.1.11"] [enlive/enlive "1.1.5"] [org.clojure/core.async "0.1.338.0-5c5012-alpha"] [org.clojure/clojurescript "0.0-2511"] [couchbase-clj/couchbase-clj "0.2.0"] [reagent/reagent "0.4.3"] [cljs-ajax/cljs-ajax "0.3.3"] [kioo/kioo "0.4.0"])])
