@@ -14,6 +14,8 @@
 
 (defroutes
 	main-site
+	(GET "/json" req
+			 (resp/json {:name "jojon" :other "what?"}))
 	(GET "/" [req]
 			 "Hello this is the main site")
 	(GET "/session-test" [req]
@@ -22,7 +24,7 @@
 	(GET "/session-get" [req]
 			 (str "Hello " (sess/get :username)))
 	(GET "/number/:number" [number]
-			 (resp/edn (get-number @app-state number)))
+			 (resp/json (get-number @app-state number)))
 	(not-found "Kagak nemu nyet"))
 
 (def all-routes

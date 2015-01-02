@@ -1,5 +1,6 @@
 (defproject zenmulti "0.1.0"
   :dependencies [[org.clojure/clojure "1.6.0"]
+                 [com.stuartsierra/component "0.2.2"]
                  [zenedu/zenpack "0.1.11"]
                  [enlive "1.1.5"]
                  [org.clojure/core.async "0.1.338.0-5c5012-alpha"]

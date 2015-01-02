@@ -32,10 +32,10 @@
 			wrap-noir-session*
 			(wrap-defaults site-defaults)))
 
-(defn -main [& [opts]]
+(defn main [opt]
 	"The java entry point to the application"
-	(do (init-app config (read-string opts))
-			(->> {:port (or (:port opts) 3000)}
+	(do (init-app config (read-string opt))
+			(->> {:port (or (:port opt) 3000)}
 					 (run-server (wrap-all all-routes))
 					 (reset! server))))
 
