@@ -18,10 +18,9 @@
 						 merge conf)
 			(swap! app-state
 						 make-couchbase
-						 (:which-couchbase? options))
-			(seed-data! app-state 5000)))
+						 (:which-couchbase? options))))
 
-(comment )
+(comment (seed-data! app-state 5000))
 
 (defn- shutdown-app
 	"The necessary actions before shutting-down the app"

@@ -1,7 +1,8 @@
 (ns zenmulti.alfa.seed
 	(:gen-class)
 	(:require [couchbase-clj.client :as cc]
-						[zenmulti.alfa.config :refer [app-state]]))
+						[zenmulti.alfa.config :refer [app-state]]
+						[org.httpkit.client :as http]))
 
 (defn prime?
 	[p]
@@ -27,6 +28,10 @@
 	(let [cdb (:couchbase-instance @app)]
 		(for [i (range 2 lim)]
 			(cc/get-json cdb (keyword (str "num" i))))))
+
+(defn from-do
+	[]
+	(str (:body @(http/get "http://lispyway.com"))))
 
 
 
